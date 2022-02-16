@@ -85,8 +85,13 @@ img {
     border: 2px solid black;
     width: calc( 100% / 8 );
     background-color: #ddd;
+    cursor: pointer;
 }
 
 .bomb {
     background-color: red;
+}
+
+.selected {
+    background-color: azure;
 }

@@ -24,7 +24,18 @@ BUTTON.addEventListener('click',function() {
     const BOMB = []
     // importo la difficoltà selezionata dall'utente
     const LVL_TEMP = difficulty.value;
-    
+ 
+    function squareClick() {
+        console.log(this.innerHTML)
+        const TempElement = this 
+        console.log( TempElement )
+
+        if( BOMB.includes (parseInt (TempElement.innerHTML) ) ) {
+            TempElement.classList.add('bomb');
+        }
+        else { TempElement.classList.add('selected');
+        }
+     }
 
     // creo variabile per il numero totale di celle in base alla difficoltà scelta
     if( LVL_TEMP === 'easy' ) {
@@ -41,7 +52,7 @@ BUTTON.addEventListener('click',function() {
     // creo celle, le formatto e le inserisco nel container
     for( let i = 1; i<celleTot+1; i++) {
         const SQUARE = document.createElement('div');
-        // SQUARE.addEventListener('click', squareClick);
+        SQUARE.addEventListener('click', squareClick);
         SQUARE.classList.add('square');
         SQUARE.style.width = `calc( 100% / ${celleXRiga} )`;
         SQUARE.innerHTML = (i);
@@ -55,15 +66,10 @@ BUTTON.addEventListener('click',function() {
         if( !BOMB.includes( b ) ) {
             BOMB.push( b );
         }
-        console.log ( b )
     } while ( BOMB.length < 16 )
     console.log( BOMB )
 
 })
-
-// function squareClick() {
-//     this.style.backgroundColor = 'white';
-//  }
 
 
     
