@@ -31,11 +31,22 @@ BUTTON.addEventListener('click',function() {
         const TempElement = this 
         console.log( TempElement )
 
-        if( BOMB.includes (parseInt (TempElement.innerHTML) ) ) {
+        if( BOMB.includes(parseInt(TempElement.innerHTML) ) ) {
             TempElement.classList.add('bomb');
+            // TempElement.removeEventListener('click', squareClick);
+            const arraySquares = document.getElementsByClassName("square");
+            for(let i = 0; i < arraySquares.length; i++) {
+                const square = arraySquares[i];
+                if( BOMB.includes( i ) ) {
+                    square.classList.add('bomb');
+                }
+                square.removeEventListener("click", squareClick);
+            }
+
             alert (`Game Over!\nHai collezionato ${score} Punti!`) 
         }
-        else { TempElement.classList.add('selected');
+        else { 
+            TempElement.classList.add('selected');
             score++
         }
      }
