@@ -33,7 +33,6 @@ BUTTON.addEventListener('click',function() {
 
         if( BOMB.includes(parseInt(TempElement.innerHTML) ) ) {
             TempElement.classList.add('bomb');
-            // TempElement.removeEventListener('click', squareClick);
             const arraySquares = document.getElementsByClassName("square");
             for(let i = 0; i < arraySquares.length; i++) {
                 const square = arraySquares[i];
@@ -48,6 +47,10 @@ BUTTON.addEventListener('click',function() {
         else { 
             TempElement.classList.add('selected');
             score++
+            if( score === celleTot-16 ) {
+                alert ('Congratulazioni! Hai vinto!')
+            }
+
         }
      }
 
