@@ -12,6 +12,7 @@ let difficulty = document.getElementById('difficulty');
 const BUTTON = document.getElementById('button');
 const GRID = document.getElementById('grid');
 let celleXRiga = 0;
+let score = 0
 
 
 
@@ -32,8 +33,10 @@ BUTTON.addEventListener('click',function() {
 
         if( BOMB.includes (parseInt (TempElement.innerHTML) ) ) {
             TempElement.classList.add('bomb');
+            alert (`Game Over!\nHai collezionato ${score} Punti!`) 
         }
         else { TempElement.classList.add('selected');
+            score++
         }
      }
 
