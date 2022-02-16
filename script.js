@@ -1,15 +1,27 @@
+
+// FUNZIONI
+function randomNumber(min, max) {
+    min = Math.ceil(min) ;
+    max = Math.floor(max) ;
+    return Math.floor(Math.random() * ( max - min + 1 ) + min);
+}
+
+
 // VARIABILI
 let difficulty = document.getElementById('difficulty');
 const BUTTON = document.getElementById('button');
 const GRID = document.getElementById('grid');
 let celleXRiga = 0;
 
+
+
+
 // bottone
 
 BUTTON.addEventListener('click',function() {
     // creo comando per liberare la griglia ad ogni click
     GRID.innerHTML = ('')
-
+    const BOMB = []
     // importo la difficoltà selezionata dall'utente
     const LVL_TEMP = difficulty.value;
     
@@ -22,25 +34,40 @@ BUTTON.addEventListener('click',function() {
         celleXRiga = 9;
     }
     else if( LVL_TEMP === 'crazy' ) {
-        celleXRiga = 8;
+        celleXRiga = 7;
     }
     let celleTot = celleXRiga**2;
 
     // creo celle, le formatto e le inserisco nel container
     for( let i = 1; i<celleTot+1; i++) {
         const SQUARE = document.createElement('div');
-        SQUARE.addEventListener('click', squareClick);
+        // SQUARE.addEventListener('click', squareClick);
         SQUARE.classList.add('square');
         SQUARE.style.width = `calc( 100% / ${celleXRiga} )`;
         SQUARE.innerHTML = (i);
         GRID.append( SQUARE );
     }
 
+    // bombe
+    //creo 16 bombe e le pusho nell'array se non sono già presenti BOMB
+    do {
+        const b = randomNumber (1, celleTot);
+        if( !BOMB.includes( b ) ) {
+            BOMB.push( b );
+        }
+        console.log ( b )
+    } while ( BOMB.length < 16 )
+    console.log( BOMB )
+
 })
 
-function squareClick() {
-    this.style.backgroundColor = 'white';
-}
+// function squareClick() {
+//     this.style.backgroundColor = 'white';
+//  }
+
+
+    
+
 
 
 
