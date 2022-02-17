@@ -82,7 +82,7 @@ BUTTON.addEventListener('click',function() {
         SQUARE.dataset.number = i;
         SQUARE.classList.add('square');
         SQUARE.style.width = `calc( 100% / ${celleXRiga} )`;
-        SQUARE.innerHTML = (i);
+        // SQUARE.innerHTML = (i);
         GRID.append( SQUARE );
     }
 
